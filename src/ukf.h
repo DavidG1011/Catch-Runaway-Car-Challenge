@@ -10,6 +10,7 @@
 using Eigen::MatrixXd;
 using Eigen::VectorXd;
 
+
 class UKF {
 public:
 
@@ -67,8 +68,19 @@ public:
   ///* Sigma point spreading parameter
   double lambda_;
 
+  ///* Radar NIS (Normalized Innovation Squared)
+  double NIS_radar;
 
-  /**
+  ///* Lidar NIS (Normalized Innovation Squared)
+  double NIS_lidar;
+
+  ///* Radar NIS (Normalized Innovation Squared) calculate and output toggle
+  bool rad_nis_out;
+
+  ///* Lidar NIS (Normalized Innovation Squared) calculate and output toggle
+  bool lid_nis_out;
+
+    /**
    * Constructor
    */
   UKF();
@@ -101,6 +113,8 @@ public:
    * Updates the state and the state covariance matrix using a radar measurement
    * @param meas_package The measurement at k+1
    */
+
+
   void UpdateRadar(MeasurementPackage meas_package);
 };
 
